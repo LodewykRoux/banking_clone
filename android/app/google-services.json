@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "615128909738",
+    "project_id": "banking-clone-e96ec",
+    "storage_bucket": "banking-clone-e96ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615128909738:android:a2a4eceeefe7a70190cdd3",
+        "android_client_info": {
+          "package_name": "com.company.bankingClone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615128909738-3835ri3s6p7ue56q3r57jbau3rj9a31h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQhzwfBIDCSlOA-q8jZ9Ui9_nXC05S9UY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615128909738-3835ri3s6p7ue56q3r57jbau3rj9a31h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
