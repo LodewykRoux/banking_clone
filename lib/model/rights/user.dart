@@ -1,3 +1,5 @@
+import 'package:banking_clone/model/exception/custom_exception.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User {
   static final _collection =
@@ -26,8 +28,6 @@ class User {
     required this.email,
     required this.emailVerified,
     required this.isSuperUser,
-    this.markets,
-    this.types,
     required this.isActive,
     this.createdOn,
     this.createdByName,
@@ -57,8 +57,6 @@ class User {
       email: email,
       emailVerified: emailVerified,
       isSuperUser: isSuperUser ?? this.isSuperUser,
-      markets: markets ?? this.markets,
-      types: types ?? this.types,
       isActive: isActive ?? this.isActive,
       createdOn: createdOn,
       createdByName: createdByName,
@@ -82,9 +80,6 @@ class User {
       uid: data['uid'],
       emailVerified: data['emailVerified'],
       isSuperUser: data['isSuperUser'] ?? false,
-      markets:
-          data['markets'] != null ? List.unmodifiable(data['markets']) : null,
-      types: data['types'] != null ? List.unmodifiable(data['types']) : null,
       isActive: data['isActive'],
       createdByName: data['createdByName'],
       createdBy: data['createdBy'],
@@ -102,8 +97,6 @@ class User {
       'email': email,
       'emailVerified': emailVerified,
       'isSuperUser': isSuperUser,
-      'markets': markets,
-      'types': types,
       'isActive': isActive,
       'createdOn': createdOn,
       'createdByName': createdByName,
@@ -145,8 +138,6 @@ class User {
         email.hashCode ^
         emailVerified.hashCode ^
         isSuperUser.hashCode ^
-        Object.hashAllUnordered(markets ?? []) ^
-        Object.hashAllUnordered(types ?? []) ^
         isActive.hashCode ^
         (createdOn?.hashCode ?? 0) ^
         createdByName.hashCode ^
