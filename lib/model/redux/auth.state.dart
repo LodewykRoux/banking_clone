@@ -1,5 +1,5 @@
+import 'package:banking_clone/model/rights/user.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
-import 'package:tally/model/rights/user.dart';
 
 class AuthState {
   final firebase.User? firebaseUser;
