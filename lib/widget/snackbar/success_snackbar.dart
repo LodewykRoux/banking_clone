@@ -5,8 +5,9 @@ class SuccessSnackbar extends SnackBar {
     String message, {
     Key? key,
   }) : super(
-            key: key,
-            content: Text(message),
-            backgroundColor: Colors.green,
-            behavior: SnackBarBehavior.floating);
+          key: key,
+          content: Text(message),
+          backgroundColor: Colors.green,
+          behavior: SnackBarBehavior.floating,
+        );
 }
