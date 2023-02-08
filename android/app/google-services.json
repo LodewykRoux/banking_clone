@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:615128909738:android:a2a4eceeefe7a70190cdd3",
         "android_client_info": {
-          "package_name": "com.company.bankingClone"
+          "package_name": "com.example.banking_clone"
         }
       },
       "oauth_client": [

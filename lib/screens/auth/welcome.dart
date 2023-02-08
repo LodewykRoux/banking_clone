@@ -1,4 +1,3 @@
-import 'package:banking_clone/screens/auth/login.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {
