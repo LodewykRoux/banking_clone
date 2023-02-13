@@ -3,6 +3,8 @@ import 'package:banking_clone/screens/auth/login.dart';
 import 'package:banking_clone/service/navigation_service.dart';
 import 'package:banking_clone/service/scaffold_messenger_service.dart';
 import 'package:banking_clone/store/app_state_reducer.dart';
+import 'package:banking_clone/theme/theme.dart';
+import 'package:banking_clone/theme/theme_manager.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +18,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  
   final store = Store<AppState>(
     AppStateReducer.appStateReducer,
     initialState: AppState.init(),
@@ -34,12 +35,12 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    
+
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: BankingCloneTheme.instance.lightTheme,
+      darkTheme: BankingCloneTheme.instance.darkTheme,
+      themeMode: ThemeManager.instance.themeMode,
       home: const Login(),
       scaffoldMessengerKey: ScaffoldMessengerService.instance.getKey(),
       navigatorKey: NavigationService.instance.navigationKey,

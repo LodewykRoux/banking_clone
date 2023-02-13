@@ -1,7 +1,7 @@
 import 'package:banking_clone/screens/auth/welcome.dart';
 import 'package:banking_clone/service/navigation_service.dart';
 import 'package:banking_clone/service/scaffold_messenger_service.dart';
-import 'package:banking_clone/widget/snackbar/tile/event_tile.dart';
+import 'package:banking_clone/widget/tile/event_tile.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
