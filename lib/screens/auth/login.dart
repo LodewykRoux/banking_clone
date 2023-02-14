@@ -1,19 +1,19 @@
 import 'package:banking_clone/screens/auth/welcome.dart';
 import 'package:banking_clone/service/navigation_service.dart';
 import 'package:banking_clone/service/scaffold_messenger_service.dart';
-import 'package:banking_clone/widget/snackbar/tile/event_tile.dart';
+import 'package:banking_clone/widget/tile/event_tile.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   Widget _loginText() {
-    return Container(
+    return ColoredBox(
       color: Colors.black,
       child: TextFormField(
         onFieldSubmitted: (value) {
           if (value == '1234') {
-            NavigationService.instance.push(Welcome());
+            NavigationService.instance.push(const Welcome());
           } else {
             ScaffoldMessengerService.instance.displayError('Incorrect pin');
           }
@@ -23,14 +23,15 @@ class Login extends StatelessWidget {
         keyboardType: TextInputType.number,
         obscureText: true,
         decoration: const InputDecoration(
-            prefixIcon: Icon(
-              Icons.lock_outline,
-              color: Colors.white,
-            ),
-            label: Text(
-              'Remote PIN',
-              style: TextStyle(color: Colors.white),
-            )),
+          prefixIcon: Icon(
+            Icons.lock_outline,
+            color: Colors.white,
+          ),
+          label: Text(
+            'Remote PIN',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       ),
     );
   }
@@ -53,8 +54,9 @@ class Login extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black,
-          side: const BorderSide(color: Colors.blue)),
+        backgroundColor: Colors.black,
+        side: const BorderSide(color: Colors.blue),
+      ),
       child: const Padding(
         padding: EdgeInsets.symmetric(vertical: 18),
         child: Text(
@@ -136,20 +138,29 @@ class Login extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: _eventTileRow(
-                        Icons.install_mobile,
-                        'Buy prepaid mobile',
-                        Icons.lightbulb_outline,
-                        'Buy electricity'),
+                      Icons.install_mobile,
+                      'Buy prepaid mobile',
+                      Icons.lightbulb_outline,
+                      'Buy electricity',
+                    ),
                   ),
                   Expanded(
                     flex: 2,
-                    child: _eventTileRow(Icons.people, 'Pay beneficiary',
-                        Icons.transfer_within_a_station, 'Transfer money'),
+                    child: _eventTileRow(
+                      Icons.people,
+                      'Pay beneficiary',
+                      Icons.transfer_within_a_station,
+                      'Transfer money',
+                    ),
                   ),
                   Expanded(
                     flex: 2,
-                    child: _eventTileRow(Icons.attach_money, 'Send cash',
-                        Icons.auto_graph, 'Track money'),
+                    child: _eventTileRow(
+                      Icons.attach_money,
+                      'Send cash',
+                      Icons.auto_graph,
+                      'Track money',
+                    ),
                   ),
                   const Spacer(
                     flex: 3,

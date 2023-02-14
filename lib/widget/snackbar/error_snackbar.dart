@@ -5,8 +5,9 @@ class ErrorSnackbar extends SnackBar {
     String message, {
     Key? key,
   }) : super(
-            key: key,
-            content: Text(message),
-            backgroundColor: Colors.red,
-            behavior: SnackBarBehavior.floating);
+          key: key,
+          content: Text(message),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+        );
 }
