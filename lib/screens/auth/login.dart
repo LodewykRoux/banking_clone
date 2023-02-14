@@ -1,19 +1,31 @@
 import 'package:banking_clone/screens/auth/welcome.dart';
+import 'package:banking_clone/screens/home/home_screen.dart';
 import 'package:banking_clone/service/navigation_service.dart';
 import 'package:banking_clone/service/scaffold_messenger_service.dart';
 import 'package:banking_clone/widget/tile/event_tile.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String _pin = '';
 
   Widget _loginText() {
     return ColoredBox(
       color: Colors.black,
       child: TextFormField(
+        initialValue: _pin,
+        onChanged: (value) {
+          _pin = value;
+        },
         onFieldSubmitted: (value) {
           if (value == '1234') {
-            NavigationService.instance.push(const Welcome());
+            NavigationService.instance.push(const HomeScreen());
           } else {
             ScaffoldMessengerService.instance.displayError('Incorrect pin');
           }
@@ -38,7 +50,13 @@ class Login extends StatelessWidget {
 
   Widget _loginButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        if (_pin == '1234') {
+          NavigationService.instance.push(const HomeScreen());
+        } else {
+          ScaffoldMessengerService.instance.displayError('Incorrect pin');
+        }
+      },
       style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
       child: const Padding(
         padding: EdgeInsets.symmetric(vertical: 18),
@@ -120,7 +138,6 @@ class Login extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: Colors.grey[900],
       body: Column(
         children: [
           _loginText(),

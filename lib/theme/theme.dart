@@ -17,8 +17,7 @@ class BankingCloneTheme {
         color: Colors.white,
       ),
     ),
-    scaffoldBackgroundColor: Colors.white,
-    
+    scaffoldBackgroundColor: Colors.grey[900],
   );
 
   final ThemeData _darkTheme = ThemeData(
