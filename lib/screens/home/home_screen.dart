@@ -1,3 +1,4 @@
+import 'package:banking_clone/screens/home/home.dart';
 import 'package:banking_clone/widget/button/icon_button_footer.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Home(),
+    Home(),
+    Home(),
+    Home(),
+    Home(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      body: _widgetOptions.elementAt(_currentIndex),
     );
   }
 }
