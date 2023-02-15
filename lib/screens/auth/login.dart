@@ -1,19 +1,32 @@
 import 'package:banking_clone/screens/auth/welcome.dart';
+import 'package:banking_clone/screens/home/home_screen.dart';
 import 'package:banking_clone/service/navigation_service.dart';
 import 'package:banking_clone/service/scaffold_messenger_service.dart';
 import 'package:banking_clone/widget/tile/event_tile.dart';
+import 'package:banking_clone/widget/tile/event_tile_row.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String _pin = '';
 
   Widget _loginText() {
     return ColoredBox(
       color: Colors.black,
       child: TextFormField(
+        initialValue: _pin,
+        onChanged: (value) {
+          _pin = value;
+        },
         onFieldSubmitted: (value) {
           if (value == '1234') {
-            NavigationService.instance.push(const Welcome());
+            NavigationService.instance.push(const HomeScreen());
           } else {
             ScaffoldMessengerService.instance.displayError('Incorrect pin');
           }
@@ -38,7 +51,13 @@ class Login extends StatelessWidget {
 
   Widget _loginButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        if (_pin == '1234') {
+          NavigationService.instance.push(const HomeScreen());
+        } else {
+          ScaffoldMessengerService.instance.displayError('Incorrect pin');
+        }
+      },
       style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
       child: const Padding(
         padding: EdgeInsets.symmetric(vertical: 18),
@@ -67,39 +86,6 @@ class Login extends StatelessWidget {
     );
   }
 
-  Widget _eventTileRow(
-    IconData firstIcon,
-    String firstText,
-    IconData secondIcon,
-    String secondText,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(
-            child: EventTile(
-              icon: firstIcon,
-              text: firstText,
-              onPressed: () {},
-            ),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: EventTile(
-              icon: secondIcon,
-              text: secondText,
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,7 +106,6 @@ class Login extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: Colors.grey[900],
       body: Column(
         children: [
           _loginText(),
@@ -135,31 +120,31 @@ class Login extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: _forgetPinButton(),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 2,
-                    child: _eventTileRow(
-                      Icons.install_mobile,
-                      'Buy prepaid mobile',
-                      Icons.lightbulb_outline,
-                      'Buy electricity',
+                    child: EventTileRow(
+                      firstIcon: Icons.install_mobile,
+                      firstText: 'Buy prepaid mobile',
+                      secondIcon: Icons.lightbulb_outline,
+                      secondText: 'Buy electricity',
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 2,
-                    child: _eventTileRow(
-                      Icons.people,
-                      'Pay beneficiary',
-                      Icons.transfer_within_a_station,
-                      'Transfer money',
+                    child: EventTileRow(
+                      firstIcon: Icons.people,
+                      firstText: 'Pay beneficiary',
+                      secondIcon: Icons.transfer_within_a_station,
+                      secondText: 'Transfer money',
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 2,
-                    child: _eventTileRow(
-                      Icons.attach_money,
-                      'Send cash',
-                      Icons.auto_graph,
-                      'Track money',
+                    child: EventTileRow(
+                      firstIcon: Icons.attach_money,
+                      firstText: 'Send cash',
+                      secondIcon: Icons.auto_graph,
+                      secondText: 'Track money',
                     ),
                   ),
                   const Spacer(
